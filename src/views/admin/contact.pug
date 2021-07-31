@@ -1,0 +1,28 @@
+extends ../layout/admin
+block list
+    include ../includes/admin/navbarAdmin
+    .container 
+        .row 
+            .col-md-12.mx-auto
+                if(msg)
+                    div(class=`alert-${msg.typeAlert}`).mt-3.alert.text-uppercase.text-center #{msg.msg}
+                if(contacts.length > 0)
+                    table.table.table-striped.mb-5.bg-info
+                        table.table.table-striped.mb-5
+                            thead.background-table.text-center.bg-info.text-white
+                                th(scope='col') #ID
+                                th(scope='col') Nombre
+                                th(scope='col') Email
+                                th(scope='col') Mensaje
+                                th(scope='col') Eliminar
+                                for contact of contacts
+                                    tbody.text-center
+                                        tr
+                                        th(scope='row') #{contact.id}
+                                        th(scope='row') #{contact.nombre}
+                                        th(scope='row') #{contact.email}
+                                        th(scope='row')  #{contact.mensaje}
+                                        td
+                                            a(href=`/api/contact/${contact.id}` onClick=`return confirm('¿Esta seguro en eliminar el contacto: ${contact.nombre}?')`).btn.btn-danger Eliminar
+                else 
+                    p.text-center.my-5.font-weight-bold No hay mensaje de contactos 

@@ -1,0 +1,56 @@
+extends ../layout/admin
+block list
+    include ../includes/admin/navbarAdmin
+    .container
+        .row
+            .col-md-8.my-4.mx-auto
+                .container 
+                    .card.card-body
+                        if(msg)
+                            div(class=`alert-${msg.typeAlert}`).alert.text-uppercase.text-center #{msg.msg}
+                        form(action='/api/client' method='post')
+                                legend.text-center.card-title.text-uppercase Agregar Clientes 
+                                .form-group
+                                label.col-md-3.control-label(for='nombre') Nombre
+                                .col-md-12
+                                    input#nombre.form-control(name='nombre' required='true' type='text' placeholder='Escribe el nombre')
+                                .form-group
+                                label.col-md-3.control-label(for='cedula') Cedula
+                                .col-md-12
+                                    input#marca.form-control(name='cedula' required='true' type='number' placeholder='Ingresa la cedula')
+                                .form-group
+                                label.col-md-3.control-label(for='telefono') Telefono
+                                .col-md-12
+                                    input#precio.form-control(name='telefono' required='true' type='tel' placeholder='Ingresa telefono')
+                                .form-group
+                                label.col-md-3.control-label(for='email') Email
+                                .col-md-12
+                                    input#imagen.form-control(name='email' required='true' type='email' placeholder='Ingresa email')
+                                .form-group
+                                .col-md-12.text-center
+                                    button.btn.btn-outline-primary.btn-block.font-weight-bold(type='submit') 
+                                        i.fas.fa-user-plus  Registrar
+    .container 
+        .row 
+            .col-md-8.mx-auto
+                if(clients.length>0)
+                    table.table.table-striped.mb-5.bg-info
+                        table.table.table-striped.mb-5
+                            thead.background-table.text-center.bg-info.text-white
+                                th(scope='col') Nombre
+                                th(scope='col') Cedula
+                                th(scope='col') Telefono 
+                                th(scope='col') Email
+                                th(scope='col') Acción
+                                for client of clients
+                                    tbody.text-center
+                                        tr
+                                        th(scope='row') #{client.nombre}
+                                        th(scope='row') #{client.cedula}
+                                        th(scope='row') #{client.telefono}
+                                        th(scope='row') #{client.email}
+                                        td
+                                            a(href=`/api/client/update/${client.id}`).btn.btn-success Editar
+                                            a(href=`/api/client/delete/${client.id}` onClick=`return confirm('¿Esta seguro en eliminar el cliente: ${client.nombre}?')`).btn.btn-danger.ml-2 Eliminar
+                else 
+                    p.text-center.my-5.font-weight-bold No existen clientes registrados

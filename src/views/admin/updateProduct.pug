@@ -1,0 +1,42 @@
+extends ../layout/admin
+block list
+    include ../includes/admin/navbarAdmin
+    .container
+        .row
+            .col-md-8.my-4.mx-auto
+                .container 
+                    .card.card-body
+                        if(msg)
+                            div(class=`alert-${msg.typeAlert}`).alert.text-uppercase.text-center #{msg.msg}
+                        if(!product)
+                            a(href="/admin/home").btn.btn-success.text-uppercase Volver
+                        else
+                            form(action=`/admin/updateProduct/${product.id}` method='post')
+                                    legend.text-center.card-title.text-uppercase Actualizar Producto 
+                                    .form-group
+                                    label.col-md-3.control-label(for='nombre') Nombre
+                                    .col-md-12
+                                        input#nombre.form-control(name='nombre' value=product.nombre required='true' type='text' placeholder='Escribe el nombre')
+                                    .form-group
+                                    label.col-md-3.control-label(for='marca') Marca
+                                    .col-md-12
+                                        input#marca.form-control(name='marca'  value=product.marca required='true' type='text' placeholder='Ingresa la marca')
+                                    .form-group
+                                    label.col-md-3.control-label(for='precio') Preció
+                                    .col-md-12
+                                        input#precio.form-control(name='precio'  value=product.precio  required='true' type='number' placeholder='$ Preció')
+                                    .form-group
+                                    label.col-md-3.control-label(for='imagen') Imagen
+                                    .col-md-12
+                                        input#imagen.form-control(name='imagen'  value=product.imagen  required='true' type='url' placeholder='https://imagen-example.jpg')
+                                    .form-group
+                                    label.col-md-3.control-label(for='stock') Stock
+                                    .col-md-12
+                                        input#stock.form-control(name='stock'  value=product.stock required='true' type='number' placeholder='Productos en Stock')
+                                    .form-group
+                                    label.col-md-3.control-label(for='descripcion') Descripcion
+                                    .col-md-12
+                                        textarea#descripcion(name="descripcion"  required="true"  placeholder=`Escribe la descripción del producto`).form-control.description-admin #{product.descripcion}
+                                    .form-group
+                                    .col-md-12.text-center
+                                        button.btn.btn-outline-success.btn-block.font-weight-bold(type='submit') Actualizar

@@ -1,0 +1,13 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  a.navbar-brand(href='/auth/login')  
+    i.fas.fa-microchip  Login Datechnology
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarNavAltMarkup.collapse.navbar-collapse
+    .navbar-nav.ml-auto.p-2
+      a.text-uppercase.btn.btn-primary(href='/auth/register') 
+        i.fas.fa-user-lock  Registro
+      a.text-uppercase.btn.btn-primary.ml-2(href='/auth/login')
+        i.fas.fa-sign-in-alt  Login
+      a.text-uppercase.btn.btn-secondary.ml-2(href='/') 
+        i.fas.fa-long-arrow-alt-left  Volver

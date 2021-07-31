@@ -1,0 +1,67 @@
+extends ./layout/index
+block content
+    main.container.mt-5.fadeInDown
+        .row 
+            .col-md-5
+                img(src="/images/note.jpg", alt="hero").img-fluid.mb-4.hero-image
+            .col-md-7
+                h1.text-left.title-hero Somos la tienda de piezas para PC número #1
+                a(href="#contact").btn.btn-outline-info.text-uppercase.cursor-pointer.mt-2 
+                    i.far.fa-envelope   Contactar
+    if(products.length > 0)
+        h1(id="product").text-center.mt-4 Últimos Productos
+        section.container.mt-4.mb-5.fadeIn
+            .row
+                for product of products
+                    .col-md-4 
+                        .card
+                            img.card-img-top(src=`${product.imagen}` alt=`${product.nombre}`)
+                            .card-body
+                                h5.card-title #{product.nombre}
+                                p.card-text
+                                | #{product.descripcion.substring(0,200)}...
+                                .d-flex.justify-content-between.mt-3.p-2
+                                    strong Marca: #{product.marca}
+                                    strong Stock: #{product.stock}
+                                a.btn.btn-outline-success.btn-block.mt-2(href='#') 
+                                   i.fas.fa-dollar-sign  #{product.precio}
+    else
+        h5.text-center.text-uppercase-font-weigth-bold.mt-4 No hay productos en stock
+        h2.text-center.mt-4 Contáctanos
+    section#contact.Material-contact-section.section-padding.section-dark.fadeIn
+        .container
+            .row
+                .col-md-12
+                    h3.section-title Envianos tus comentarios & sugerencias
+            .row
+                .col-md-6.mt-3.contact-widget-section2
+                    p
+                    | Datechnology es la tienda ideal para todo tipo de piezas en PC. Contáctanos para obtener más informacion de nuestros productos & últimos servicios.
+                    .find-widget
+                    i.fas.fa-globe-europe  Sitio Web:  
+                    a(href='/')  Datechnology Web
+                    .find-widget
+                    i.fas.fa-map-marker-alt  Dirección:  
+                    a(href='#')  Valera, entre calle 4 & 8
+                    .find-widget
+                    i.fas.fa-phone  Teléfono:   
+                    a(href='#')  +58 424-231-42332
+                    .find-widget
+                    i.fas.fa-clock  Horario:  
+                    a(href='#')  Lunes a Viernes de 8 AM a 6 PM
+                .col-md-6
+                    if(msg)
+                        div(class=`alert-${typeAlert}`).alert.text-uppercase.text-center #{msg}
+                    form#contactForm(role='form' method='post' action="/api/contact").mt-1
+                        .form-group.label-floating
+                            label.control-label(for='name') Nombre
+                            input#name.form-control(type='text' name='nombre' required='true' data-error='Please enter your name')
+                        .form-group.label-floating
+                            label.control-label(for='email') Email
+                            input#email.form-control(type='email' name='email' required='true' data-error='Please enter your Email')
+                        .form-group.label-floating
+                            label.control-label(for='message') Mensaje
+                            textarea#message.form-control(rows='3' name='mensaje' required='true')
+                        .form-submit.mt-5
+                            button#form-submit.btn.btn-block.btn-info.text-uppercase(type='submit') 
+                                i.far.fa-paper-plane  Enviar

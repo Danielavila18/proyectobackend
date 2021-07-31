@@ -1,0 +1,68 @@
+extends ../layout/admin
+block list
+    include ../includes/admin/navbarAdmin
+    .container
+        .row
+            .col-md-8.my-4.mx-auto
+                .container 
+                    .card.card-body
+                        if(msg)
+                            div(class=`alert-${msg.typeAlert}`).alert.text-uppercase.text-center #{msg.msg}
+                        form(action='/admin/products' method='post')
+                                legend.text-center.card-title.text-uppercase Agregar Productos 
+                                .form-group
+                                label.col-md-3.control-label(for='nombre') Nombre
+                                .col-md-12
+                                    input#nombre.form-control(name='nombre' required='true' type='text' placeholder='Escribe el nombre')
+                                .form-group
+                                label.col-md-3.control-label(for='marca') Marca
+                                .col-md-12
+                                    input#marca.form-control(name='marca' required='true' type='text' placeholder='Ingresa la marca')
+                                .form-group
+                                label.col-md-3.control-label(for='precio') Preció
+                                .col-md-12
+                                    input#precio.form-control(name='precio' required='true' type='number' placeholder='$ Preció')
+                                .form-group
+                                label.col-md-3.control-label(for='imagen') Imagen
+                                .col-md-12
+                                    input#imagen.form-control(name='imagen' required='true' type='url' placeholder='https://imagen-example.jpg')
+                                .form-group
+                                label.col-md-3.control-label(for='stock') Stock
+                                .col-md-12
+                                    input#stock.form-control(name='stock' required='true' type='number' placeholder='Productos en Stock')
+                                label.col-md-3.control-label(for='descripcion') Descripcion
+                                .col-md-12
+                                    textarea#descripcion(name="descripcion", cols="4", rows="3" required="true" placeholder="Describe el producto").form-control
+                                .form-group
+                                .col-md-12.text-center
+                                    button.btn.btn-outline-primary.btn-block.font-weight-bold(type='submit') 
+                                        i.far.fa-paper-plane  Enviar
+    .container 
+        .row 
+            .col-md-8.mx-auto
+                if(products.length>0)
+                    table.table.table-striped.mb-5.bg-info
+                        table.table.table-striped.mb-5
+                            thead.background-table.text-center.bg-info.text-white
+                                th(scope='col') Nombre
+                                th(scope='col') Marca
+                                th(scope='col') Preció
+                                th(scope='col') Stock
+                                th(scope='col') descripcion
+                                th(scope='col') Imagen
+                                th(scope='col') Acción
+                                for product of products
+                                    tbody.text-center
+                                        tr
+                                        th(scope='row') #{product.nombre}
+                                        th(scope='row') #{product.marca}
+                                        th(scope='row') $ #{product.precio}
+                                        th(scope='row')  #{product.stock}
+                                        th(scope='row')  #{product.descripcion.substring(0,100)}...
+                                        td
+                                            img(src=`${product.imagen}` class="img-fluid img-product"  alt="imagen")
+                                        td
+                                            a(href=`/admin/update/${product.id}`).btn.btn-success Editar
+                                            a(href=`/admin/delete/${product.id}` onClick=`return confirm('¿Esta seguro en eliminar el producto: ${product.nombre}?')`).btn.btn-danger.m-2 Eliminar
+                else 
+                    p.text-center.my-5.font-weight-bold No existen productos registrados

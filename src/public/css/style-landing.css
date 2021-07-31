@@ -1,0 +1,154 @@
+body {
+  background: rgb(245, 243, 243);
+}
+html {
+	scroll-behavior: smooth;
+}
+.title-hero {
+  font-family: 'Courier New', Courier, monospace;
+}
+.hero-image{
+    border-radius: 1.5em;
+}
+.section-padding {
+  padding: 45px 0;
+}
+.section-dark {
+  background-color: #f9f9f9;
+  z-index: -2;
+}
+.form-control,
+.form-group .form-control {
+  border: 0;
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#009688),
+      to(#009688)
+    ),
+    -webkit-gradient(linear, left top, left bottom, from(#d2d2d2), to(#d2d2d2));
+  background-image: -webkit-linear-gradient(#009688, #009688),
+    -webkit-linear-gradient(#d2d2d2, #d2d2d2);
+  background-image: -o-linear-gradient(#009688, #009688),
+    -o-linear-gradient(#d2d2d2, #d2d2d2);
+  background-image: linear-gradient(#009688, #009688),
+    linear-gradient(#d2d2d2, #d2d2d2);
+  -webkit-background-size: 0 2px, 100% 1px;
+  background-size: 0 2px, 100% 1px;
+  background-repeat: no-repeat;
+  background-position: center bottom, center -webkit-calc(100% - 1px);
+  background-position: center bottom, center calc(100% - 1px);
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-transition: background 0s ease-out;
+  -o-transition: background 0s ease-out;
+  transition: background 0s ease-out;
+  float: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+.form-group {
+  position: relative;
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+.form-group textarea ~ .form-control-highlight {
+  margin-top: -11px;
+}
+
+.form-control {
+  margin-bottom: 7px;
+}
+
+.form-group.label-floating.is-focused label.control-label,
+.form-group.label-floating label.control-label,
+.form-group.label-static label.control-label {
+  top: -30px;
+  left: 0;
+  font-size: 12px;
+  line-height: 1.07142857;
+}
+
+#contactForm .form-group label.control-label {
+  color: #8c8c8c;
+}
+
+#contactForm .form-control {
+  font-weight: 500;
+  height: auto;
+}
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fadeIn {
+  opacity: 0;
+  -webkit-animation: fadeIn ease-in 1;
+  -moz-animation: fadeIn ease-in 1;
+  animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
+}

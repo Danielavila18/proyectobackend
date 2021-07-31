@@ -1,0 +1,15 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-secondary
+  a.navbar-brand(href='/admin/home') 
+    i.fas.fa-microchip  Admin Datechnology
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarNavAltMarkup.collapse.navbar-collapse
+    .navbar-nav.ml-auto.p-2
+      a.btn.btn-info(href='/admin/home') 
+        i.fas.fa-laptop.mr-2  Productos
+      a.btn.btn-info.ml-2(href='/api/client')
+        i.fas.fa.fa-users  Clientes
+      a.btn.btn-info.ml-2(href='/admin/contact') 
+        i.fas.fa-file-signature  Contactos
+      a.btn.btn-danger.ml-2(href='/auth/logout') 
+        i.fas.fa-sign-out-alt  Cerrar Sesión

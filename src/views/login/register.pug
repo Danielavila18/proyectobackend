@@ -1,0 +1,30 @@
+extends ../layout/admin
+block list
+    include ./navbarLogin
+    main.container.mt-5.form
+        .row
+            .col-md-5.mx-auto.fadeInDown
+                .formAdmin.form
+                    .logo.mb-3
+                    .col-md-12.text-center
+                        h2 Registrarme 
+                    if(msg)
+                        .alert.alert-danger.text-center.text-uppercase #{msg}
+                    form(method="POST" action="/auth/register")
+                        .form-group
+                            label(for='nombre') Escribe tu usuario
+                            input#email.form-control(required="true"  type='text' name='nombre' placeholder='Usuario')
+                        .form-group
+                            label(for='email') Escribe tu correo
+                            input#email.form-control(required="true"  type='email' name='email' placeholder='Email')
+                        .form-group
+                            label(for='password') Ingresa el password
+                            input#password.form-control(required="true" type='password' name='clave'  placeholder='Password')
+                        .col-md-12.text-center
+                            button(type="submit").btn.btn-primary.btn-block.btn-radius  
+                                i.fas.fa-user-plus  Registrarse
+                        .form-group.text-right
+                            p
+                            | ¿Ya tienes cuenta? 
+                            a(href='/auth/login').text-decoration-none 
+                                i.fas.fa-long-arrow-alt-right Inicia sesion
